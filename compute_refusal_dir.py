@@ -11,14 +11,15 @@ from tqdm import tqdm
 
 torch.inference_mode()
 
-MODEL_ID = "stabilityai/stablelm-2-zephyr-1_6b"
+MODEL_ID = "openai/gpt-oss-20b"
 #MODEL_ID = "Qwen/Qwen1.5-1.8B-Chat"
 #MODEL_ID = "Qwen/Qwen-1_8B-chat"
 #MODEL_ID = "google/gemma-1.1-2b-it"
 #MODEL_ID = "google/gemma-1.1-7b-it"
 #MODEL_ID = "meta-llama/Meta-Llama-3-8B-Instruct"
 
-model = AutoModelForCausalLM.from_pretrained(MODEL_ID, trust_remote_code=True, torch_dtype=torch.float16, quantization_config=BitsAndBytesConfig(load_in_4bit=True, bnb_4bit_compute_dtype=torch.float16))
+model = AutoModelForCausalLM.from_pretrained(MODEL_ID, trust_remote_code=True)
+
 tokenizer = AutoTokenizer.from_pretrained(MODEL_ID, trust_remote_code=True)
 
 # settings:
